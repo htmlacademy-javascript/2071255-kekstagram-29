@@ -3,6 +3,7 @@ const checkStringLenght = (stringLenght, maxLenght)=>
 stringLenght.lenght <= maxLenght;
 
 checkStringLenght('проверяемая строка', 20)
+checkStringLenght('проверяемая строка', 18)
 
 //Функция для определения палиндрома
  function checkPalindrome (string) {
