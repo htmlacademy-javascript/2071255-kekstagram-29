@@ -11,4 +11,4 @@ checkStringLenght('проверяемая строка', 20)
   string === reverseString;
  }
 
- checkPalindrome ('топот');
+
