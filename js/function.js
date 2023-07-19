@@ -1,14 +1,16 @@
 //Функция для проверки длины строки
-const checkStringLenght = (stringLenght, maxLenght)=>
-stringLenght.lenght <= maxLenght;
+const checkStringLength = (stringLength, maxLength) =>
+  stringLength.length <= maxLength;
 
-checkStringLenght('проверяемая строка', 20)
+checkStringLength('проверяемая строка', 20);
+checkStringLength('проверяемая строка', 18);
 
 //Функция для определения палиндрома
- function checkPalindrome (string) {
-  const normalizedString = string.toLowerCase.replace.All(' ','');
+function checkPalindrome(string) {
+  const normalizedString = string.toLowerCase.replace.All(' ', '');
   const reverseString = normalizedString.split('').reverse('').join('');
-  string === reverseString;
- }
+  return (string === reverseString);
+}
+checkPalindrome('тор');
 
 
