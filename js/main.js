@@ -18,8 +18,7 @@ comments - МАССИВ ОБЪЕКТОВ {
 }
 */
 const PHOTO_COUNT = 25;
-const COMMENTS_COUNT = 2;
-const USER_NAME = [
+const USER_NAMES = [
   'Миша',
   'Ваня',
   'Настя',
@@ -35,7 +34,7 @@ const PHOTO_COMMENTS = [
   'Отличное фото!',
   'Ты молодец! Жду других постов',
 ];
-const PHOTO_DESCRIPTION = [
+const PHOTO_DESCRIPTIONS = [
   'Отдыхаю:)',
   'Я и мой кот',
   'Говорят у вас там понедельник',
@@ -57,16 +56,16 @@ const getRandomArrayElement = (elements) =>
 const createUniqueNumber = (min, max) => {
   const previousValues = [];
   return function () {
-    let currentValue = getRandomInteger (min, max);
+    let currentValue = getRandomInteger(min, max);
     if (previousValues.length >= (max - min + 1)) {
       return null;
     }
-      while (previousValues.includes(currentValue)) {
-        currentValue = getRandomInteger (min, max);
-    };
+    while (previousValues.includes(currentValue)) {
+      currentValue = getRandomInteger(min, max);
+    }
     previousValues.push(currentValue);
     return currentValue;
-  }
+  };
 
 };
 /**Создание объекта комментарий пользователя */
@@ -75,29 +74,30 @@ const generateAvatar = () => getRandomInteger(1, 5);
 
 const generateCommentInfo = () => {
   const avatar = generateAvatar();
-  return{
-  id: generateCommentId(),
-  message: getRandomArrayElement(PHOTO_COMMENTS),
-  avatar: `img/avatar-${avatar}.svg`,
-  name: getRandomArrayElement(USER_NAME),
-  }
+  return {
+    id: generateCommentId(),
+    message: getRandomArrayElement(PHOTO_COMMENTS),
+    avatar: `img/avatar-${avatar}.svg`,
+    name: getRandomArrayElement(USER_NAMES),
+  };
 };
-console.log(Array.from({length: 4}, generateCommentInfo));
+console.log(Array.from({ length: 4 }, generateCommentInfo));
 /**Генерация массива с фотографиями */
 
 const generateAvatarUrl = createUniqueNumber(1, 25);
 const generatePhotoId = createUniqueNumber(1, 50);
 const generatePhotoLikes = () => getRandomInteger(15, 200);
-const generateComment = () => Array.from({length: getRandomInteger(0, 30)}, generateCommentInfo);
+const generateComment = () => Array.from({ length: getRandomInteger(0, 30) }, generateCommentInfo);
 
 const generatePhotoInfo = () => {
   const photoLink = generateAvatarUrl();
   return {
     id: generatePhotoId(),
     url: `photos/${photoLink}.jpg`,
-    description: getRandomArrayElement(PHOTO_DESCRIPTION),
+    description: getRandomArrayElement(PHOTO_DESCRIPTIONS),
     likes: generatePhotoLikes(),
     comments: generateComment(),
-  }
+  };
 };
-console.log(Array.from({length: 4}, generatePhotoInfo));
+console.log(Array.from({ length: PHOTO_COUNT}, generatePhotoInfo));
+const photoWithComments = (Array.from({ length: PHOTO_COUNT }, generatePhotoInfo));
