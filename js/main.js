@@ -81,7 +81,6 @@ const generateCommentInfo = () => {
     name: getRandomArrayElement(USER_NAMES),
   };
 };
-console.log(Array.from({ length: 4 }, generateCommentInfo));
 /**Генерация массива с фотографиями */
 
 const generateAvatarUrl = createUniqueNumber(1, 25);
@@ -99,5 +98,7 @@ const generatePhotoInfo = () => {
     comments: generateComment(),
   };
 };
-console.log(Array.from({ length: PHOTO_COUNT}, generatePhotoInfo));
-const photoWithComments = (Array.from({ length: PHOTO_COUNT }, generatePhotoInfo));
+function getPhotoWithComments () {
+  Array.from({ length: PHOTO_COUNT }, generatePhotoInfo);
+}
+export {getPhotoWithComments};
